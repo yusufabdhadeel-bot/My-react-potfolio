@@ -1,91 +1,75 @@
-Yusuf Abdhadeel – Frontend Developer Portfolio
+# React + TypeScript + Vite
 
-Welcome to my personal portfolio website! This project showcases who I am, the technologies I work with, and some of the projects I've built as a frontend developer.
-Live Demo
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Website: https://yusufabdhadeel.netlify.app
+Currently, two official plugins are available:
 
-About
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-I'm Yusuf Abdhadeel, a Frontend Developer passionate about building modern, responsive, and user-friendly web applications. I enjoy turning ideas into clean, interactive digital experiences using modern web technologies.
+## React Compiler
 
-This portfolio serves as a central place where visitors can:
-1. Learn more about me
-2. View my featured projects
-3. Explore my technical skills
-4. Contact me for freelance work or job opportunities
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-Features
- Modern and responsive design
- Mobile-first layout
- Smooth scrolling and animations
- Project showcase
- Skills section
- About section
- Contact section
- SEO optimized
- Fast loading performance
- Cross-browser compatibility
+## Expanding the ESLint configuration
 
-Built With
- HTML5
- CSS3
- JavaScript (ES6+)
- Git
- GitHub
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-Getting Started
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-To run this project locally:
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-1. Clone the repository
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 
-```bash
-git clone https://github.com/yusufabdhadeel.bot/My-potfolio.git
 ```
 
-2. Navigate into the project folder
+You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
 
-```bash
-cd My-potfolio
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+
 ```
-
-3. Open `index.html` in your browser.
-
-Or use the VS Code Live Server extension for the best development experience.
-
-Responsive Design
-The website is fully responsive and optimized for:
-
- Desktop
- Laptop
- Tablet
- Mobile devices
-
-Goals
-
-This portfolio was created to:
- Showcase my frontend development skills
- Highlight real-world projects
- Demonstrate responsive web design
- Provide an easy way for clients and recruiters to contact me
-
-Contact
-
-I'm always open to freelance opportunities, internships, and full-time frontend development roles.
-
-Portfolio: https://yusufabdhadeel.netlify.app
-GitHub: https://github.com/yusufabdhadeel-bot/My-potfolio/
-LinkedIn: https://www.linkedin.com/in/yusufabdhadeel
-Email: https://mail.google.com/mail/?view=cm&to=yusufabdhadeel@gmail.com
-
-License
-This project is licensed under the MIT License.
-Feel free to fork this repository for learning purposes, but please do not copy the design or content directly without permission.
-
-Support
-
-If you found this project helpful or inspiring, consider giving it a star on GitHub.
-
-Thank you for visiting my portfolio!
-<img width="1351" height="643" alt="image" src="https://github.com/user-attachments/assets/44a4eb7f-1ddf-4940-b665-8e586669a3e3" />
